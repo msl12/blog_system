@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title><%= @title ? "#{@title} - #{APP_CONFIG['site_title']}" : APP_CONFIG['site_title'] %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<% unless account_login? %>
+<%= link_to '登录', login_path %>
+        <% else -%>
+          <%= current_account.name -%>
+          <% if account_admin? -%>
+          <%= link_to '写文章', url(:admin, :new_blog) -%>
+          <%= link_to '管理', url(:admin, :index), :class => 'admin' -%>
+          <% end -%>
+          <%= button_to '退出', url(:logout), :method => :delete -%>
+        <% end %>
+<body>
+<%= yield %>
+</body>
+</html>

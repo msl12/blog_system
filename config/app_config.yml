@@ -1,0 +1,10 @@
+development: &default
+  site_title: 'msl12的小栈'
+  
+test: 
+  <<: *default
+
+production:
+  <<: *default
+  site_url: 'http://robbinfan.com'
+  blog_search_ping: true

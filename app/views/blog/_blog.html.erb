@@ -1,0 +1,21 @@
+<% 
+  view_count=blog.view_count
+  if b=Blog.read_second_level_cache(blog.id) # 估计这里要崩溃
+    view_count=b.view_count
+  end
+%>
+
+<div class="con">
+  <div class="tit clearfix">
+    <%= link_to blog.title, blog_path(blog) %>
+  <div class="text">
+    <%= blog.content.truncate(300) %><!-- content? -->
+  </div>
+  <div class="info clearfix">
+    <div class="fr">
+      <span class="author"><%= blog.account.name %></span>
+      <span class="time"><%= time_ago_in_words(blog.created_at) %>发表</span><!-- 估计 time_ago_in_words 有问题 -->
+      <span class="views" title="浏览次数"><%= view_count %>次浏览</span>
+    </div>
+  </div>
+</div>
