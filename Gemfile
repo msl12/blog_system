@@ -46,5 +46,6 @@ group :development do
 end
 
 gem 'will_paginate'
-gem "second_level_cache", "~> 2.1.9"
-gem 'padrino'
+#gem "second_level_cache", "~> 2.1.9"
+#gem 'padrino'
+gem 'bcrypt-ruby', :require => 'bcrypt'

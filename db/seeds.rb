@@ -1,7 +1,30 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# Seed add you the ability to populate your db.
+# We provide you a basic shell for interaction with the end user.
+# So try some code like below:
 #
-# Examples:
+#   name = shell.ask("What's your name?")
+#   shell.say name
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+email     = shell.ask "Which email do you want use for logging into admin?"
+name      = shell.ask "What is your name?"
+password  = shell.ask "Tell me the password to use:"
+
+shell.say ""
+
+account = Account.create(:email => email, :name => name, :password => password, :password_confirmation => password, :role => "admin")
+
+if account.valid?
+  shell.say "================================================================="
+  shell.say "Account has been successfully created, now you can login with:"
+  shell.say "================================================================="
+  shell.say "   email: #{email}"
+  shell.say "   name: #{name}"
+  shell.say "   password: #{password}"
+  shell.say "================================================================="
+else
+  shell.say "Sorry but some thing went wrong!"
+  shell.say ""
+  account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+end
+
+shell.say ""
