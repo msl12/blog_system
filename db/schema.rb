@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423012329) do
+ActiveRecord::Schema.define(version: 20160423131141) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -28,10 +28,13 @@ ActiveRecord::Schema.define(version: 20160423012329) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "title",                  null: false
-    t.integer  "view_count", default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "title",                       null: false
+    t.integer  "view_count",      default: 0, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "user_id"
+    t.integer  "blog_content_id"
+    t.integer  "account_id"
   end
 
 end

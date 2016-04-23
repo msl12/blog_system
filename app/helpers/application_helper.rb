@@ -13,4 +13,8 @@ module ApplicationHelper
 		current_account ? true : false
 	end
 
+	def account_admin?
+		current_account && current_account.admin? ? true : false
+	end
+
 end

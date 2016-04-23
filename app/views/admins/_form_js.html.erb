@@ -48,7 +48,7 @@
       return false;
     });
     $('a#show_blog_content_preview').click(function(){
-      $.post('<%= url(:admin, :blog_preview) %>', {term: $('textarea#blog_content').val()}, function(data){
+      $.post('#', {term: $('textarea#blog_content').val()}, function(data){
         $('a#show_blog_content_editor').removeClass('current');
         $('a#show_blog_content_preview').addClass('current');
         $('div#blog_content_preview').html(data).show();

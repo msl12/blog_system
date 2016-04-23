@@ -6,15 +6,62 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<body>
+    <div id="flash-notice"></div>
+    <div class="header">
+      <div class="wrap">
+        <div class="user_img"><img src="/website.jpg" width="80" height="80" alt="website icon"></div>
+        <div class="blog_title"><%= APP_CONFIG['site_title'] %></div>
+        <div class="write">
 <% unless account_login? %>
 <%= link_to '登录', main_app.login_path %>
         <% else -%>
           <%= current_account.name %>
-          <%= link_to '写文章', '#' %>
+          <%= link_to '写文章', admin_blog_new_path %>
           <%= link_to '管理', '#' %>
           <%= button_to '退出', logout_path, method: :delete %>
         <% end %>
-<body>
+                </div>
+        <div class="blog_motto"><%= APP_CONFIG['site_motto'] %></div>
+      </div>
+    </div><!-- header -->
+    <div class="nav">
+      <div class="wrap clearfix">
+        <ul>
+          <li><a href="/" <%= "class='current'".html_safe if @nav == 'home' %>>首页</a></li>
+          <li><a href="/blog" <%= "class='current'".html_safe if @nav == 'blog' %>>博客</a></li>
+           <li><a href="/" <%= "class='current'".html_safe if @nav == 'me' %>>关于</a></li>
+        </ul>
+      </div>
+    </div><!-- nav -->
+    <div class="wrap clearfix">
 <%= yield %>
-</body>
+</div>
+<div class="footer">
+      <a href="http://weibo.com/robbinfan" class="weibo">Weibo</a>
+      <a href="https://github.com/robbin" class="github">Github</a>      
+      <a href="mailto:fankai@gmail.com" class="mail">Email</a>
+      <div class="powered-by">
+        <a href="#" title="msl12的小栈">Powered by msl12</a>&nbsp;
+        <a href="#" title="msl12">Design by msl12</a>
+      </div>
+    </div><!-- footer -->
+     <script src="/javascripts/jquery.js?1376388024" type="text/javascript"></script>
+<script src="/javascripts/jquery-ujs.js?1376388024" type="text/javascript"></script>
+<script src="/javascripts/application.js?1376388024" type="text/javascript"></script>
+    <script type="text/javascript">
+       $(function(){
+    $('div.pagination').append(' 共73篇文章');
+  });
+       <script type="text/javascript">
+      // $('form#cse-search-box button#search-button').click(function(){
+      //   window.open('http://guge.io/#q=' + $('form#cse-search-box input#search-box').val() + '+site:robbinfan.com');
+      //   return false;
+      // });
+    </script>
+      <% if flash[:notice] %>
+      $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
+      <% end %>
+    </script>
+  </body>
 </html>

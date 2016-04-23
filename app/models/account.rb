@@ -17,6 +17,10 @@ class Account < ActiveRecord::Base
 		account && account.has_password?(password) ? account : nil
 	end
 
+	def admin?
+		self.email=='2496227361@qq.com'
+	end
+
 	def has_password?(password)
 		::BCrypt::Password.new(crypted_password)==password
 	end
