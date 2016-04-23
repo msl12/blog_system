@@ -2,31 +2,37 @@
 
 <h3>微信号</h3>
 <div class="tag">
-	<%#= image_tag("robbin_foods_shop.jpg", :alt => "肉饼铺子微信订阅号", :title => "肉饼铺子微信订阅号") %>
+  <img alt="微信订阅号" title="微信订阅号" src="/images/robbin_foods_shop.jpg?1408504282" />
 </div>
 
 <h3>文章分类</h3>
 <div class="tag">
-  <%# Blog.cached_tag_cloud.select {|t| t.count > 2}.each do |tag| %>
-  <%#= link_to "#{tag.name}<span>#{tag.count}</span>".html_safe, url(:blog, :tag, :name => tag.name) %>
-  <%# end %>
+  <a href="/tag/weixin">weixin<span>23</span></a>
+  <a href="/tag/ruby">ruby<span>11</span></a>
+  <a href="/tag/industry">industry<span>9</span></a>
+  <a href="/tag/life">life<span>5</span></a>
+  <a href="/tag/management">management<span>5</span></a>
+  <a href="/tag/product">product<span>4</span></a>
+  <a href="/tag/tech">tech<span>3</span></a>
+  <a href="/tag/entrepreneur">entrepreneur<span>3</span></a>
+  <a href="/tag/linux">linux<span>3</span></a>
 </div>
   
 <h3>热门文章</h3>
 <div class="hot_blog">
-  <%# Blog.hot_blogs(5).each do |blog| %>
-  <%#= link_to blog.title, blog_url(blog) %>
-  <%# end %>
+  <a href="/blog/38/orm-cache-sumup">Web应用的缓存设计模式</a>
+  <a href="/blog/29/my-new-website">新的个人网站开张 robbinfan.com</a>
+  <a href="/blog/31/why-love-shanghai">我为何喜欢上海不喜欢北京</a>
+  <a href="/blog/40/ruby-off-rails">Ruby社区应该去Rails化了</a>
+  <a href="/blog/28/about-robbin">范凯的自我介绍</a>
 </div>
 
 <h3>最新评论</h3>
 <ul class="comment">
-  <%# BlogComment.order('id DESC').limit(5).each do |comment| %>
-	<li>
-    <div><%#= comment.brief_content %>...</div>
-  	<%#= comment.account.name %>评论了<%#= link_to comment.blog.title, blog_url(comment.blog), :anchor => 'comments' %>
+  <li>
+    <div>今天一口气把robbin哥javaeye上的贴通篇读了一遍，受益匪浅。多年前看的这部电影，除了感动，更多的是带给了自己对生活中向上的信心。...</div>
+    HittorTan评论了<a href="/blog/54#comments">《当幸福来敲门》</a>
   </li>
-  <%# end %>
 </ul>
 
 <%# end %>
