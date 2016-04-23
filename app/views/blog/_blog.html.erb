@@ -10,9 +10,7 @@
     <%= link_to blog.title, blog_path(blog) %>
      </div>
   <div class="text">
-    <div class="infor_tag">    
-      <a class="tag" rel="tag" href="/tag/weixin"><span>weixin</span></a>
-    </div>
+
     <%= blog.content.truncate(300) %><!-- content? -->
   </div>
   <div class="info clearfix">
@@ -20,7 +18,7 @@
       <span class="author"><%= blog.account.name %></span>
       <span class="time"><%= time_ago_in_words(blog.created_at) %>发表</span><!-- 估计 time_ago_in_words 有问题 -->
       <span class="views" title="浏览次数"><%= view_count %>次浏览</span>
-      <a class="comment" title="评论" href="/blog/77#comments">11</a>
+
     </div>
   </div>
 </div>

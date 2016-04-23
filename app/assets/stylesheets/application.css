@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*heard*/
-body{ background:#D8BFD8;}
+body{ background:#D8DDEA;}
 .wrap{ max-width:1000px;margin:0 auto; }
 .header{ height:170px; background:#8FBC8F;}
 .header .wrap{}
@@ -696,7 +696,6 @@ pre code{display:block;padding:.5em;background:white;color:black}pre .comment,pr
 
 
 body {
-    background-color:transparent;
     color:black;
     font-family: Helvetica, Tahoma, Arial, sans-serif;
     font-size:12px;
