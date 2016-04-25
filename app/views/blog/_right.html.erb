@@ -1,19 +1,11 @@
 <%# cache("#{CACHE_PREFIX}/layout/right", :expires_in => 1.day) do %>
-
-<h3>微信号</h3>
+<h3>我的微信号</h3>
 <div class="tag">
-
+	<%= image_tag("weixin.png", :alt => "微信号", :title => "微信号") %>
 </div>
-
-  
 <h3>热门文章</h3>
 <div class="hot_blog">
-
-</div>
-
-
-<%# end %>
-
-<div class="rss clearfix">
-  <a href="/rss">RSS订阅</a>
+	<% Blog.hot_blogs(5).each do |blog| %>
+		<%= link_to blog.title, blog_path(blog) %>
+	<% end %>
 </div>

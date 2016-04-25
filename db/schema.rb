@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423131141) do
+ActiveRecord::Schema.define(version: 20160424052730) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +22,7 @@ ActiveRecord::Schema.define(version: 20160423131141) do
   end
 
   create_table "blog_contents", force: :cascade do |t|
-    t.text     "content",    limit: 16777215, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.text "content", limit: 16777215, null: false
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -32,7 +30,6 @@ ActiveRecord::Schema.define(version: 20160423131141) do
     t.integer  "view_count",      default: 0, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "user_id"
     t.integer  "blog_content_id"
     t.integer  "account_id"
   end

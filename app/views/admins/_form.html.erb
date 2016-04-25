@@ -1,33 +1,17 @@
-<% content_for :stylesheets do %>
-<%= stylesheet_link_tag 'github' %>
-<%= stylesheet_link_tag 'github.min' %>
-<% end %>
-
 <table class="content">
   <tr>
     <th valign="top">文章标题</th>
     <td><%= form.text_field :title, :class => 'title' %></td>
   </tr>
-  
   <tr>
     <th valign="top">文章内容</th>
     <td>
-      <div class="blog_content_editor_tab clearfix">
-        <a id="show_blog_content_editor" href="#" class="current">编辑器</a>
-        <a id="show_blog_content_preview" href="#">预览文章</a>
-      </div>
       <%= form.text_area :content %>
       <div id="blog_content_preview" class="con text"></div>
-      <div>
-        [<a href="http://wowubuntu.com/markdown/" target="_blank">Markdown中文帮助</a>]
-        [<a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Github风格的Markdown格式</a>]
-      </div>
     </td>
   </tr>
-
-
   <tr>
-    <th>&nbsp;</th>
+    <th></th>
     <td align="center">
       <%= form.submit '', :class => 'submit' %>
     </td>

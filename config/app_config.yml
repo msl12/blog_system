@@ -1,11 +1,6 @@
 development: &default
-  site_title: 'msl12的小栈'
+  site_title: '小莫的小栈'
   site_motto: 'stay hungry, stay foolish'
-  
-test: 
-  <<: *default
 
 production:
   <<: *default
-  site_url: 'http://robbinfan.com'
-  blog_search_ping: true

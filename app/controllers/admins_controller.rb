@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+	before_action :check_admin?
+
 	def new_blog
 		@blog=Blog.new
 	end
@@ -6,10 +8,7 @@ class AdminsController < ApplicationController
 	def blog
 		@blog=Blog.new(blog_params)
 		@blog.account=current_account
-		#@blog.user_id=current_account.id
 		if @blog.save
-			#@blog.user_id=current_account.id
-			#ping_search_engine(@blog) if APP_CONFIG['blog_search_ping'] # only ping search engine in production environment
 			flash[:notice] = '文章成功发布'
 			redirect_to blog_path(@blog)
 		else
@@ -17,9 +16,34 @@ class AdminsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@blog=Blog.find(params[:id].to_i)
+		@blog.destroy
+		flash[:notice]='文章已经删除'
+		redirect_to '/'
+	end
+
+	def edit
+		  @blog=Blog.find(params[:id].to_i)
+		  if @blog.update_blog(blog_params)
+		  	flash[:notice]='文章修改完成'
+		  	redirect_to blog_path(@blog)
+		  else
+		  	render 'edit_blog'
+		  end
+	end
+
+	def edit_blog
+		@blog=Blog.find(params[:id].to_i)
+	end
+
 	private
 	def blog_params
 		params.require(:blog).permit(:title, :content)
+	end
+
+	def check_admin?
+		halt_403 unless account_admin?
 	end
 
 end

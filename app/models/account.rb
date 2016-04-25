@@ -12,7 +12,6 @@ class Account < ActiveRecord::Base
 	before_save :encrypt_password, :if => :password_required
 
 	def self.authenticate(email, password)
-		#account=first(:conditions => { :email => email }) if email.present?
 		account=Account.find_by_email(email) if email.present?
 		account && account.has_password?(password) ? account : nil
 	end

@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 // Put your application scripts here
 $(function(){
   // response search query on main nav both mouse click and keyboard return key

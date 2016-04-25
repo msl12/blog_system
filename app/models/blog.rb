@@ -14,9 +14,22 @@ class Blog < ActiveRecord::Base
 	 end
 
 	 def increment_view_count
-	 	increment(:view_count)        # add view_count += 1
-	 	#write_second_level_cache      # update cache per hit, but do not touch db # update db per 10 hits
-	 	#self.class.update_all({:view_count => view_count}, :id => id) if view_count % 10 == 0
+	 	increment(:view_count)
+	 	self.save
+	end
+
+	def self.hot_blogs(count)
+		self.order('view_count DESC').limit(count)
+	end
+
+	def update_blog(param_hash)
+		self.transaction do
+			update_attributes!(param_hash)
+			blog_content.save!
+			save!
+		end
+	rescue
+		return false
 	end
 
 end
