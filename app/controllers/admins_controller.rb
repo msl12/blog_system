@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
 
 	private
 	def blog_params
-		params.require(:blog).permit(:title, :content)
+		params.require(:blog).permit(:title, :content, :user_tags)
 	end
 
 	def check_admin?

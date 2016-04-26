@@ -3,6 +3,12 @@
 <div class="tag">
 	<%= image_tag("weixin.png", :alt => "微信号", :title => "微信号") %>
 </div>
+<h3>文章分类</h3>
+<div class="tag">
+  <% Blog.cached_tag_cloud.each do |tag| %>
+  	<%= link_to "#{tag.name}<span>#{tag.count}</span>".html_safe, tag_path(tag.name) %><!-- url(:blog, :tag, :name => tag.name) -->
+  <% end %>
+</div>
 <h3>热门文章</h3>
 <div class="hot_blog">
 	<% Blog.hot_blogs(5).each do |blog| %>

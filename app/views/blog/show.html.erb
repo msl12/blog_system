@@ -13,6 +13,13 @@
         <%= link_to '', blog_edit_path(@blog), :class => 'edit', :title => '编辑' %>
         <% end %>
       </div>
+      <% unless @blog.cached_tags.blank? %>
+        <div class="info clearfix">
+          <% @blog.cached_tags.each do |tag| %>
+            <%= link_to "<span>#{tag}</span>".html_safe, tag_path(tag), :class => 'tag', :rel => 'tag' %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="text">
         <%= markdown(@blog.content) %>
       </div>

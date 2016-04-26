@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   match "admin/blog/:id/" => 'admins#edit', via: :put, as: 'blog_edit_put'
   match "admin/blog/:id/edit" => 'admins#edit_blog', via: :get, as: 'blog_edit'
   match 'blog' => 'blog#index', via: :get
+  match 'tag' => 'blog#tag_cloud', via: :get, as: 'tags'
+  match 'tag/:name' => 'blog#tag', via: :get, as: 'tag'
 
 end
