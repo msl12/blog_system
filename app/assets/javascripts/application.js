@@ -223,3 +223,28 @@ var JSAdapter = {
     form.submit();
   }
 };
+
+$(document).scrollTop($('div#comments').offset().top);
+$('div#comments>ul').prepend('<%= js_escape_html(partial("blog/comment", :object => @comment)).html_safe %>');
+$('div#comments>ul>li#<%= @comment.id %>').hide().fadeIn('slow');
+$('textarea#blog_comment_content').attr("value", "");
+
+$('a[data-remote=true]').on('click', function(e) {
+  var element = $(this); 
+  if (e.stopped) return;
+  e.preventDefault(); e.stopped = true;
+  JSAdapter.sendRequest(element, { 
+    verb: element.data('method') || 'get',
+    url: element.attr('href')
+  });
+});
+
+$('li#<%= @comment.id %> div.cot_con a.quote_comment').click(function(){
+  var commentBlock = $(this).closest('li');
+  $.get('<%= url(:blog, :quote_comment) %>', {id: commentBlock.attr('id')}, function(data){
+    var body = $('textarea#blog_comment_content').val() + data;
+    $('textarea#blog_comment_content').val(body);
+    $('textarea#blog_comment_content').focus();
+  });
+  return false;
+});

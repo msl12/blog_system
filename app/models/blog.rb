@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
 
+	has_many :comments, :class_name => 'BlogComment', :dependent => :destroy
 	belongs_to :blog_content, :dependent => :destroy
 	belongs_to :account
 	delegate :content, :to => :blog_content, :allow_nil => true

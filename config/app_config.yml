@@ -1,5 +1,6 @@
 development: &default
   site_title: '小莫的小栈'
+  site_url: 'http://localhost:3000'
   site_motto: 'stay hungry, stay foolish'
 
 production:

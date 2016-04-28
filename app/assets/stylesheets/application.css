@@ -176,9 +176,9 @@ body{ background:#D8DDEA;}
 .con .comment blockquote > :first-child { margin-top: 0; }
 .con .comment blockquote > :last-child { margin-bottom: 0; }
 .con .comment pre code{word-wrap: break-word;word-break: break-all;}
-.con .comment .editor_switcher {height:25px;margin-bottom:6px;background:url(piont_ddd.png) repeat-x bottom;}
-.con .comment .editor_switcher ul {margin:0;padding:0;list-style:none;width:200px;font-weight:bold;}
-.con .comment .editor_switcher ul li {margin:0 5px;padding:0;list-style:none;float:left;border:1px #ddd solid; border-top:none; width:80px; text-align:center; margin-right:10px;background:url(piont_ddd.png) repeat-x top;}
+.con .comment .editor_switcher {height:43px;margin-bottom:6px;background:url(piont_ddd.png) repeat-x bottom;}
+.con .comment .editor_switcher ul {margin:0;padding:0;list-style:none;width:100px;font-weight:bold;}
+.con .comment .editor_switcher ul li {margin:0 5px;padding:10;list-style:none;float:left;border:1px #ddd solid; border-top:none; width:80px; text-align:center; margin-right:10px;background:url(piont_ddd.png) repeat-x top;}
 .con .comment .editor_switcher li:hover{ color:#666; background:url(piont_69c.png) repeat-x top; }
 .con .comment .editor_switcher li.current{ border-bottom:1px #fff solid; background:url(piont_69c.png) repeat-x top;}
 .con .comment .editor_switcher li a {text-decoration:none;}
@@ -248,7 +248,7 @@ body{ background:#D8DDEA;}
 
 /*flash notice*/
 div#flash-notice{ width:100px;height:24px;text-align:center;position:fixed;background-color:red;color:#fff;top:0px;right:0px;display:none;}
-div#comment-error-info{ width:120px;height:24px;text-align:center;float:left;position:relative;background-color:red;color:#fff;display:none;}
+div#comment-error-info{ width:120px;height:14px;text-align:center;float:left;position:relative;background-color:red;color:#fff;display:none;}
 div#form-error-info{ width:100%;height:20px;text-align:left;display:block;color:red;}
 div#form-error-info span{padding:0 5px;}
 

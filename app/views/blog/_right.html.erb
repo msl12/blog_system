@@ -15,3 +15,12 @@
 		<%= link_to blog.title, blog_path(blog) %>
 	<% end %>
 </div>
+<h3>最新评论</h3>
+<ul class="comment">
+	<% BlogComment.order('id DESC').limit(5).each do |comment| %>
+		<li>
+			<div><%= brief_content(comment.content) %></div>
+			<%= comment.account.name %>评论了<%= link_to comment.blog.title, blog_path(comment.blog), :anchor => 'comments' %>
+		</li>
+	<% end %>
+</ul>

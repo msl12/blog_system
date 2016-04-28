@@ -31,6 +31,34 @@
         </div>
       </div>
     </div><!-- content -->
+    <div class="comment clearfix">
+      <div id="comments">      
+        <h2><span><%= @blog.comments_count %></span>条评论</h2>
+        <ul>
+          <% if @blog.comments_count > 0 %>
+          <%= render partial: 'blog/comment', :collection => @blog.comments.reverse %>
+          <% end %>
+        </ul>
+      </div>
+      <a name="comments"></a>
+      <div class="relative">
+        <div class="editor_switcher">
+          <ul>
+            <li class="current"><a id="publish_comment" href="#">发表评论</a></li>
+          </ul>
+        </div>
+        <%= form_for BlogComment.new, url: create_comment_path(@blog), :remote => true do |f| %>
+          <%= f.text_area :content, :class => 'comment' %>
+          <div id="comment-error-info"></div>
+          <%= f.submit '', :class => 'comment_btn' %>
+        <% end %>
+        <div class="box" style="<%= "display:none;" if account_login? %>">
+          <button class="close"></button>
+          <p>我想知道与谁交流思想，请用微博登录留言。</p>
+          <button class="sina_btn"></button>
+        </div><!-- box -->
+      </div><!-- relative -->
+    </div><!-- comment -->
   </div><!-- con -->
 </div><!-- left -->
 

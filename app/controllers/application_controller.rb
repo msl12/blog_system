@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
     render 'error/404'
   end
 
+  def halt_401
+    render 'error/401'
+  end
+
 end
