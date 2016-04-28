@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   match "admin/blog/:id/" => 'admins#destroy', via: :delete, as: 'delete_blog'
   match "admin/blog/:id/" => 'admins#edit', via: :put, as: 'blog_edit_put'
   match "admin/blog/:id/edit" => 'admins#edit_blog', via: :get, as: 'blog_edit'
+  match 'admin/blog/preview' => 'admins#blog_preview', via: :post, as: 'pre_blog'
   match 'blog' => 'blog#index', via: :get
   match 'blog/:id/comments' => 'blog#create_comment', via: :post, as: 'create_comment'
   match 'comment/:id' => 'blog#comment', via: :delete, as: 'delete_comment'

@@ -37,6 +37,10 @@ class AdminsController < ApplicationController
 		@blog=Blog.find(params[:id].to_i)
 	end
 
+  	def blog_preview
+  		GitHub::Markdown.render(params[:term], :gfm) if params[:term]
+  	end
+
 	private
 	def blog_params
 		params.require(:blog).permit(:title, :content, :user_tags)

@@ -23,6 +23,7 @@ class HomeController < ApplicationController
 	def logout
 		if account_login?
 			session[:account_id]=nil
+			flash[:notice] = '成功退出'
 			# @current_account=nil # 是否需要？
 		end
 		redirect_to '/'
