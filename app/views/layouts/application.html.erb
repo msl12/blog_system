@@ -5,9 +5,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'document', 'content' %>
+  <%= yield :stylesheets %>
 </head>
 <body>
-    <div id="flash-notice"></div><!-- 用于flash消息 -->
+    <div id="flash-notice"></div>
     <div class="header">
       <div class="wrap">
         <div class="user_img"><img src="/website.jpg" width="80" height="80"></div>
@@ -17,8 +19,8 @@
           <%= link_to '登录', main_app.login_path %>
           <% else %>
           <%= current_account.name %>
-          <%= link_to '写文章', admin_blog_new_path %>
-          <%= button_to '退出', logout_path, method: :delete %>
+          <%= link_to '写文章', main_app.admin_blog_new_path %>
+          <%= button_to '退出', main_app.logout_path, method: :delete %>
           <% end %>
         </div>
         <div class="blog_motto"><%= APP_CONFIG['site_motto'] %></div>
@@ -39,8 +41,7 @@
 <div class="footer">
       <a href="https://github.com/msl12/msl12_site" class="github" target="_blank">Github</a>
       <div class="powered-by">
-        <a href="/">Powered by msl12</a>&nbsp;
-        <a href="http://www.elvenui.com/" title="Elvenui" target="_blank">Design by Elvenui</a>
+        <a href="/">Powered by msl12</a>
       </div>
     </div><!-- footer -->
     <%= javascript_include_tag 'jquery', 'jquery-ujs' %>

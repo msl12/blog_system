@@ -3,16 +3,15 @@
 <% @title<<" | 第#{params[:page]}页" if params[:page] && params[:page].to_i>1 %>
 
 <div class="left">
-	<h3 class="tab_list">我的博客文章</h3><!-- 我改成了'tab_list' -->
+	<h3 class="tab_list">我的博客文章</h3>
 	<%= render partial: 'blog/blog', :collection => @blogs %>
 	<div>
 		<%= (will_paginate @blogs, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe %>
 	</div>
-</div><!-- left content -->
+</div>
 
 <div class="right">
-  <%#= render partial: 'blog/right' %>
   <%= render partial: 'blog/right' %>
-</div><!-- right content -->
+</div>
 
 <%= render partial: 'blog/articles_count', :locals => {:blogs => @blogs} %>

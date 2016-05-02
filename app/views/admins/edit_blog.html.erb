@@ -1,7 +1,7 @@
 <div class="publish">
 	<div class="con">
-		<%= form_for :blog, url: blog_edit_put_path(@blog), :method => :put, :id => 'editor' do |f| %>
-		<%= render partial: 'form', :object => f %>
+		<%= form_for :blog, url: blog_edit_put_path(@blog), :method => :put, html: { id: 'editor' } do |f| %>
+			<%= render partial: 'form', :object => f %>
 		<% end %>
 	</div>
 </div>

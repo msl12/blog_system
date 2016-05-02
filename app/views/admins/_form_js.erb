@@ -12,22 +12,16 @@
       if ($('textarea#blog_content').val().length < 10) {
         error_info += '<span>文章内容太少了;</span>';
       }
-      var slugUrl = $('input#blog_slug_url').val();
-      if (slugUrl.length > 0) {
-        var re = /^[a-zA-Z0-9\-]{1,}$/;
-        if (!re.test(slugUrl)) {
-          error_info += '<span>URL格式错了：只允许字母数字横线</span>';
-        }
-      }
       if (error_info.length > 0) {
         $('div#form-error-info').html(error_info);
         return false;
       }
     });
+
     
     // toggle add/remove tag to and from input box
     $('form#editor div.tag a.tag').click(function(){
-      var tagName = $.trim($(this).find('span').html());
+      var tagName = $.trim($(this).find('span').html());   
       var tagList = filterTags($('input#blog_user_tags').val());
       var index = $.inArray(tagName, tagList)
       if (index === -1) {
@@ -35,7 +29,7 @@
       } else {
         tagList.splice(index, 1);
       }
-      $('input#blog_user_tags').val(tagList.join(" , ")).focus();
+      $('input#blog_user_tags').val(tagList.join(" , ")).focus();     
       return false;
     });
     
@@ -47,8 +41,9 @@
       $('textarea#blog_content').show();
       return false;
     });
+
     $('a#show_blog_content_preview').click(function(){
-      $.post('#', {term: $('textarea#blog_content').val()}, function(data){
+      $.post('<%= pre_blog_path %>', {term: $('textarea#blog_content').val()}, function(data){
         $('a#show_blog_content_editor').removeClass('current');
         $('a#show_blog_content_preview').addClass('current');
         $('div#blog_content_preview').html(data).show();

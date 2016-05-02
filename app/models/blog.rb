@@ -1,7 +1,8 @@
 class Blog < ActiveRecord::Base
-	acts_as_taggable # Alias for acts_as_taggable_on :tags
+	acts_as_taggable
 
 	has_many :comments, :class_name => 'BlogComment', :dependent => :destroy
+	has_many :attachments, :dependent => :destroy
 	belongs_to :blog_content, :dependent => :destroy
 	belongs_to :account
 	delegate :content, :to => :blog_content, :allow_nil => true
@@ -14,8 +15,8 @@ class Blog < ActiveRecord::Base
 	end
 
 	 def content=(value)
-	 	self.blog_content||=BlogContent.new
-	 	self.blog_content.content=value
+	 	self.blog_content ||= BlogContent.new
+	 	self.blog_content.content = value
 
 	 	self.blog_content.save
 	 end
@@ -49,12 +50,18 @@ class Blog < ActiveRecord::Base
 
 	def user_tags=(tags)
 		unless tags.blank?
-			self.tag_list=tags.split(/\s*,\s*/).uniq.collect {|t| t.downcase}.select {|t| t =~ /^(?!_)(?!.*?_$)[\+#a-zA-Z0-9_\s\u4e00-\u9fa5]+$/}.join(",")
+			self.tag_list = tags.split(/\s*,\s*/).uniq.collect {|t| t.downcase}.select {|t| t =~ /^(?!_)(?!.*?_$)[\+#a-zA-Z0-9_\s\u4e00-\u9fa5]+$/}.join(",")
 		end
 	end
 
 	def cached_tags
 		cached_tag_list ? cached_tag_list.split(/\s*,\s*/) : []
 	end
+
+	def attach!(owner)
+	    self.transaction do
+	      owner.attachments.orphan.each {|attachment| attachment.update_attribute(:blog_id, self.id) }
+	    end
+	  end
 
 end

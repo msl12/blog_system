@@ -1,8 +1,10 @@
 require 'base64'
 
 class Account < ActiveRecord::Base
-	attr_accessor :password # 虚拟属性
+	attr_accessor :password
 	has_many :blogs
+	has_many :blog_comments, :dependent => :destroy
+	has_many :attachments
 
 	validates_presence_of :email, :if => :password_required
 	validates_presence_of :password, :if => :password_required
@@ -12,21 +14,21 @@ class Account < ActiveRecord::Base
 	before_save :encrypt_password, :if => :password_required
 
 	def self.authenticate(email, password)
-		account=Account.find_by_email(email) if email.present?
+		account = Account.find_by_email(email) if email.present?
 		account && account.has_password?(password) ? account : nil
 	end
 
 	def admin?
-		self.email=='2496227361@qq.com'
+		self.email == '2496227361@qq.com'
 	end
 
 	def has_password?(password)
-		::BCrypt::Password.new(crypted_password)==password
+		::BCrypt::Password.new(crypted_password) == password
 	end
 
 	private
 	def encrypt_password
-		self.crypted_password=::BCrypt::Password.create(password) unless password.blank?
+		self.crypted_password = ::BCrypt::Password.create(password) unless password.blank?
 	end
 
 	def password_required

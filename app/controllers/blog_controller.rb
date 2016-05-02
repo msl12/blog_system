@@ -1,11 +1,11 @@
 class BlogController < ApplicationController
 
 	def index
-		  @blogs=Blog.order('id DESC').paginate(page: params[:page])
+		  @blogs = Blog.order('id DESC').paginate(page: params[:page])
 	end
 
 	def show
-		@blog=Blog.find(params[:id].to_i)
+		@blog = Blog.find(params[:id].to_i)
 		@blog.increment_view_count
 	end
 
@@ -29,17 +29,23 @@ class BlogController < ApplicationController
 		@comment.account = current_account
 		@comment.content = blog_comment_params[:content]
 		@comment.save
-		#render 'blog/create_comment' # JS不晓得为什么用不了
-		redirect_to blog_path(blog) # 为什么不能实现跳转？
+		render 'create_comment'
 	end
 
-	def comment # 无力吐槽...
-		comment = BlogComment.find(params[:id])
+	def comment
+		@comment = BlogComment.find(params[:id])
 		if account_admin?
-			comment.destroy
+			@comment.destroy
+			render 'delete_comment'
 		else
 			halt_403
 		end
+	end
+
+	def comment_preview
+		return false unless account_login?
+		@preview = GitHub::Markdown.to_html(params[:term], :gfm) if params[:term]
+		render partial: 'comment_preview'
 	end
 
 	private

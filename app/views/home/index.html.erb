@@ -1,5 +1,5 @@
-<% @nav='home' %>
-<% @title="#{APP_CONFIG['site_title']} | 第#{params[:page]}页" if params[:page] && params[:page].to_i>1 %>
+<% @nav = 'home' %>
+<% @title = "#{APP_CONFIG['site_title']} | 第#{params[:page]}页" if params[:page] && params[:page].to_i > 1 %>
 
 <div class="left">
   <%= render partial: 'blog/blog', :collection => @blogs %>
@@ -11,4 +11,4 @@
 <div class="right">
   <%= render partial: 'blog/right' %>
 </div><!-- right -->
-<%= render partial: 'blog/articles_count', :locals => {:blogs => @blogs} %><!-- :locals选项用于设置partial的局部变量 -->
+<%= render partial: 'blog/articles_count', :locals => {:blogs => @blogs} %>

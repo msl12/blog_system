@@ -3,7 +3,7 @@
     <%= link_to blog.title, blog_path(blog) %>
      </div>
   <div class="text">
-    <div class="infor_tag">    
+    <div class="infor_tag">
       <% blog.cached_tags.each do |tag| %>
         <%= link_to "<span>#{tag}</span>".html_safe, tag_path(tag), :class => 'tag', :rel => 'tag' %>
       <% end %>
@@ -15,7 +15,7 @@
       <span class="author"><%= blog.account.name %></span>
       <span class="time"><%= time_ago_in_words(blog.created_at) %>前发表</span>
       <span class="views" title="浏览次数"><%= blog.view_count %>次浏览</span>
-      <%= link_to blog.comments_count.to_s, "/blog/#{blog.id}/#comments", :class => 'comment', :title => '评论数' %>
+      <%= link_to blog.comments_count.to_s, "/blog/#{blog.id}#comments", :class => 'comment', :title => '评论数' %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
       <span class="user_name"><%= commenter_link(comment.account) %></span>
       <span class="time"><%= time_ago_in_words(comment.created_at) %>前</span>
       <% if account_admin? %>
-        <span><%= link_to '', delete_comment_path(comment), :method => :delete, :remote => true, :confirm => '要删除评论吗？', :class => 'delete', :title => '删除评论' %></span>
+        <span><%= link_to '', delete_comment_path(comment), :method => :delete, :remote => true, :class => 'delete', data: {confirm: '要删除评论吗？'}, :title => '删除评论' %></span>
       <% end %>
     </div>
     <div class="comment_content"><%= markdown(comment.content) %></div>

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -10,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
   def current_account
   	return @current_account if @current_account
-	return @current_account=Account.find_by_id(session[:account_id]) if session[:account_id]
+	return @current_account = Account.find_by_id(session[:account_id]) if session[:account_id]
   end
 
   def account_login?

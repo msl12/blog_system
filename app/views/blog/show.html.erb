@@ -1,6 +1,6 @@
-<% @title=@blog.title %>
-<% content_for :stylesheets do %><!-- 如果这里没用，我就删除掉你！ -->
-<%= stylesheet_link_tag 'default/github', 'hightlight/github.min' %>
+<% @title = @blog.title %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'github', 'github.min' %>
 <% end %>
 <div class="left">
   <div class="con">
@@ -9,7 +9,7 @@
         <h1><%= link_to @blog.title, blog_path(@blog) %></h1>
         <%= link_to '', '#', :class => 'markdown' %>
         <% if account_admin? %>
-        <%= link_to '', delete_blog_path(@blog), :method => :delete, :confirm => '要删除文章吗？', :class => 'del', :title => '删除' %><!-- 要用到jquery-rails插件的东西 -->
+        <%= link_to '', delete_blog_path(@blog), :method => :delete, data: {confirm: '要删除文章吗？'}, :class => 'del', :title => '删除'  %>
         <%= link_to '', blog_edit_path(@blog), :class => 'edit', :title => '编辑' %>
         <% end %>
       </div>
@@ -45,11 +45,13 @@
         <div class="editor_switcher">
           <ul>
             <li class="current"><a id="publish_comment" href="#">发表评论</a></li>
+            <li><a id="preview_comment" href="#">预览评论</a></li>
           </ul>
         </div>
         <%= form_for BlogComment.new, url: create_comment_path(@blog), :remote => true do |f| %>
           <%= f.text_area :content, :class => 'comment' %>
           <div id="comment-error-info"></div>
+          <div id="comment_preview" class="con comment"></div>
           <%= f.submit '', :class => 'comment_btn' %>
         <% end %>
         <div class="box" style="<%= "display:none;" if account_login? %>">
@@ -65,7 +67,7 @@
 <div class="right">
   <%= render partial: 'blog/right' %>
 </div><!-- right -->
-<% content_for :javascripts do %><!-- 如果这里没用，我就删除掉你！ -->
+<% content_for :javascripts do %>
   <%= javascript_include_tag 'highlight.min' %>
   <script type="text/javascript">
   $(function(){
@@ -101,7 +103,7 @@
       return false;
     });
     $('a#preview_comment').click(function(){
-      $.post('#', {term: $('textarea#blog_comment_content').val()}, function(data){
+      $.post('<%= pre_comment_path %>', {term: $('textarea#blog_comment_content').val()}, function(data){
         $('a#preview_comment').parent().addClass('current');
         $('a#publish_comment').parent().removeClass('current');
         $('textarea#blog_comment_content').hide();
