@@ -2,18 +2,10 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.precompile += %w( github.css )
-Rails.application.config.assets.precompile += %w( github.min.css )
-Rails.application.config.assets.precompile += %w( highlight.min.js )
-Rails.application.config.assets.precompile += %w( jquery.js )
-Rails.application.config.assets.precompile += %w( jquery-ujs.js )
-Rails.application.config.assets.precompile += %w( document.css )
-Rails.application.config.assets.precompile += %w( content.css )
-Rails.application.config.assets.precompile += %w( attachment.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( github.css github.min.css highlight.min.js jquery.js jquery-ujs.js document.css content.css attachment.css )

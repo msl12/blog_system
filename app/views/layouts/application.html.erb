@@ -19,7 +19,9 @@
           <%= link_to '登录', main_app.login_path %>
           <% else %>
           <%= current_account.name %>
-          <%= link_to '写文章', main_app.admin_blog_new_path %>
+           <% if account_admin? %>
+            <%= link_to '写文章', main_app.admin_blog_new_path %>
+          <% end %>
           <%= button_to '退出', main_app.logout_path, method: :delete %>
           <% end %>
         </div>

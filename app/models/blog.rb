@@ -17,7 +17,6 @@ class Blog < ActiveRecord::Base
 	 def content=(value)
 	 	self.blog_content ||= BlogContent.new
 	 	self.blog_content.content = value
-
 	 	self.blog_content.save
 	 end
 

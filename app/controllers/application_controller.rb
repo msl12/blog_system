@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
     render 'error/401'
   end
 
+  def halt_500
+    render 'error/500'
+  end
+
 end

@@ -12,9 +12,7 @@ class BlogController < ApplicationController
 	def tag
 		@blogs = Blog.tagged_with(params[:name]).order('id DESC').paginate(page: params[:page])
 		if @blogs.blank?
-			halt_404
-		else
-
+			return halt_404
 		end
 	end
 
@@ -38,7 +36,7 @@ class BlogController < ApplicationController
 			@comment.destroy
 			render 'delete_comment'
 		else
-			halt_403
+			return halt_403
 		end
 	end
 

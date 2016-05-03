@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	end
 
 	def login_get
-		@account = Account.new
+		
 	end
 
 	def login_post
