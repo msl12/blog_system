@@ -2,6 +2,10 @@ require 'timeout'
 
 class QQAuth
 
+	def authorize_url
+		"https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=#{APP_CONFIG['qq_api_key']}&redirect_uri=#{URI.escape APP_CONFIG['qq_redirect_uri']}"
+	end
+
 	def callback(code)
 		@openid = Timeout::timeout(20) do
 			@access_token = JSON.parse(RestClient.get('https://graph.qq.com/oauth2.0/token',

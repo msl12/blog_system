@@ -3271,3 +3271,370 @@ Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 14:35:29 +0800
 
 
 Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 14:35:29 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:32:38 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.3ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (141.7ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.2ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (651.2ms)
+  Rendered blog/_articles_count.html.erb (0.5ms)
+  Rendered home/index.html.erb within layouts/application (859.4ms)
+Completed 200 OK in 1177ms (Views: 1067.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/application.self-de86b7f146818e9958b5b2d72ae4d56b220fcd4f819462dc2631c6b376369bf0.css?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/document.self-897db9889b41d0f7b9a005e547574c9b14fdeae625fbf834d1a3404ed6ec2945.css?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/application.self-d0d511cf1ace2676944baff031287904f639ae9620053725ea6ba2951676f5c9.js?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/content.self-5456cca4983026e46ed3649a089e85c5c61e33d6f6b97743519e1bbc12b5c00a.css?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/jquery-ujs.self-3d272be22a0e90ef2ca4128b9819ae0c5c846b88b64b6cf417afa86e26a6044b.js?body=1" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:32:40 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:32:41 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:32:41 +0800
+
+
+Started GET "/qq_login" for 127.0.0.1 at 2016-05-06 21:32:44 +0800
+Processing by HomeController#qq_login as HTML
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `redirect' for #<HomeController:0x00000001cd8448>
+Did you mean?  redirect_to):
+  app/controllers/home_controller.rb:13:in `qq_login'
+
+
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.9ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.2ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.0ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/moshenglong/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (34.2ms)
+
+
+Started GET "/qq_login" for 127.0.0.1 at 2016-05-06 21:32:59 +0800
+Processing by HomeController#qq_login as HTML
+Redirected to https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101310369&redirect_uri=http://www.msl12.cn/qq_callback
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:33:03 +0800
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.5ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.2ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.2ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (20.9ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (15.3ms)
+  Rendered blog/_articles_count.html.erb (0.1ms)
+  Rendered home/index.html.erb within layouts/application (45.1ms)
+Completed 200 OK in 89ms (Views: 77.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/application.self-d0d511cf1ace2676944baff031287904f639ae9620053725ea6ba2951676f5c9.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/document.self-897db9889b41d0f7b9a005e547574c9b14fdeae625fbf834d1a3404ed6ec2945.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/content.self-5456cca4983026e46ed3649a089e85c5c61e33d6f6b97743519e1bbc12b5c00a.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/application.self-de86b7f146818e9958b5b2d72ae4d56b220fcd4f819462dc2631c6b376369bf0.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/jquery-ujs.self-3d272be22a0e90ef2ca4128b9819ae0c5c846b88b64b6cf417afa86e26a6044b.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:04 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:33:06 +0800
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.2ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.2ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.3ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (9.4ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.2ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (12.8ms)
+  Rendered blog/_articles_count.html.erb (0.1ms)
+  Rendered home/index.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 61ms (Views: 56.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.self-de86b7f146818e9958b5b2d72ae4d56b220fcd4f819462dc2631c6b376369bf0.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/document.self-897db9889b41d0f7b9a005e547574c9b14fdeae625fbf834d1a3404ed6ec2945.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/jquery-ujs.self-3d272be22a0e90ef2ca4128b9819ae0c5c846b88b64b6cf417afa86e26a6044b.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/content.self-5456cca4983026e46ed3649a089e85c5c61e33d6f6b97743519e1bbc12b5c00a.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/application.self-d0d511cf1ace2676944baff031287904f639ae9620053725ea6ba2951676f5c9.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:07 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.2ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (5.4ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.3ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (10.6ms)
+  Rendered blog/_articles_count.html.erb (0.1ms)
+  Rendered home/index.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 43ms (Views: 39.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/application.self-de86b7f146818e9958b5b2d72ae4d56b220fcd4f819462dc2631c6b376369bf0.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/application.self-d0d511cf1ace2676944baff031287904f639ae9620053725ea6ba2951676f5c9.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/content.self-5456cca4983026e46ed3649a089e85c5c61e33d6f6b97743519e1bbc12b5c00a.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/document.self-897db9889b41d0f7b9a005e547574c9b14fdeae625fbf834d1a3404ed6ec2945.css?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/jquery-ujs.self-3d272be22a0e90ef2ca4128b9819ae0c5c846b88b64b6cf417afa86e26a6044b.js?body=1" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:33:11 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:33:12 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:12 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:12 +0800
+
+
+Started GET "/blog" for 127.0.0.1 at 2016-05-06 21:33:13 +0800
+Processing by BlogController#index as HTML
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (3.9ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (7.6ms)
+  Rendered blog/_articles_count.html.erb (0.0ms)
+  Rendered blog/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:13 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:13 +0800
+
+
+Started GET "/blog" for 127.0.0.1 at 2016-05-06 21:33:14 +0800
+Processing by BlogController#index as HTML
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (5.1ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (6.4ms)
+  Rendered blog/_articles_count.html.erb (0.0ms)
+  Rendered blog/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:14 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:14 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:33:15 +0800
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.7ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (5.2ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (8.9ms)
+  Rendered blog/_articles_count.html.erb (0.0ms)
+  Rendered home/index.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:33:15 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:33:15 +0800
+
+
+Started GET "/qq_login" for 127.0.0.1 at 2016-05-06 21:33:17 +0800
+Processing by HomeController#qq_login as HTML
+Redirected to https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101310369&redirect_uri=http://www.msl12.cn/qq_callback
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:58:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.2ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.2ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (93.4ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (318.6ms)
+  Rendered blog/_articles_count.html.erb (0.5ms)
+  Rendered home/index.html.erb within layouts/application (423.8ms)
+Completed 200 OK in 1054ms (Views: 525.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-06 21:58:16 +0800
+Processing by HomeController#index as HTML
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY id DESC LIMIT 3 OFFSET 0
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 25]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlogContent Load (0.1ms)[0m  [1mSELECT  "blog_contents".* FROM "blog_contents" WHERE "blog_contents"."id" = ? LIMIT 1[0m  [["id", 17]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blog/_blog.html.erb (3.8ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN blogs ON blogs.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Blog' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT blogs.id FROM "blogs")) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT  "blogs".* FROM "blogs"  ORDER BY view_count DESC LIMIT 5
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT  "blog_comments".* FROM "blog_comments"  ORDER BY id DESC LIMIT 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered blog/_right.html.erb (17.7ms)
+  Rendered blog/_articles_count.html.erb (0.0ms)
+  Rendered home/index.html.erb within layouts/application (24.1ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self-de86b7f146818e9958b5b2d72ae4d56b220fcd4f819462dc2631c6b376369bf0.css?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/jquery.self-50014c4b3d5da3d620fd7b7386a905bcf1d67c8a69c43ce86b386533fd3118f5.js?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/content.self-5456cca4983026e46ed3649a089e85c5c61e33d6f6b97743519e1bbc12b5c00a.css?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/document.self-897db9889b41d0f7b9a005e547574c9b14fdeae625fbf834d1a3404ed6ec2945.css?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/application.self-d0d511cf1ace2676944baff031287904f639ae9620053725ea6ba2951676f5c9.js?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/jquery-ujs.self-3d272be22a0e90ef2ca4128b9819ae0c5c846b88b64b6cf417afa86e26a6044b.js?body=1" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/weixin-71ab36f9b72256dd15ff03aeee6b1938e2410a6bd8955192c466b213224d3f34.png" for 127.0.0.1 at 2016-05-06 21:58:17 +0800
+
+
+Started GET "/assets/y.png" for 127.0.0.1 at 2016-05-06 21:58:18 +0800
+
+
+Started GET "/assets/x.png" for 127.0.0.1 at 2016-05-06 21:58:18 +0800

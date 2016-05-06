@@ -9,6 +9,10 @@ class HomeController < ApplicationController
 		
 	end
 
+	def qq_login
+		redirect_to QQAuth.new.authorize_url
+	end
+
 	def qq_callback
 		return halt_401 unless params[:code]
 		auth = QQAuth.new
