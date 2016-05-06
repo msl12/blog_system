@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :already_logged?, only: [:login_get, :login_post, :qq_callback]
+	before_action :already_logged?, only: [:login_get, :login_post, :qq_callback, :qq_login]
 
 	def index
 		@blogs = Blog.order('id DESC').paginate(page: params[:page])

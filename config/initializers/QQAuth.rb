@@ -1,4 +1,5 @@
 require 'timeout'
+require 'rest-client'
 
 class QQAuth
 
