@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title><%= @title ? "#{@title} - #{APP_CONFIG['site_title']}" : APP_CONFIG['site_title'] %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'document', 'content' %>
+  <%= yield :stylesheets %>
+</head>
+<body>
+    <div id="flash-notice"></div>
+    <div class="header">
+      <div class="wrap">
+        <div class="user_img"><img src="/website.jpg" width="80" height="80"></div>
+        <div class="blog_title"><%= APP_CONFIG['site_title'] %></div>
+        <div class="write">
+          <% unless account_login? %>
+          <%= link_to '登录', main_app.login_path %>
+          <% else %>
+          <%= current_account.name %>
+           <% if account_admin? %>
+            <%= link_to '写文章', main_app.admin_blog_new_path %>
+          <% end %>
+          <%= button_to '退出', main_app.logout_path, method: :delete %>
+          <% end %>
+        </div>
+        <div class="blog_motto"><%= APP_CONFIG['site_motto'] %></div>
+      </div>
+    </div><!-- header -->
+    <div class="nav">
+      <div class="wrap clearfix">
+        <ul>
+          <li><a href="/" <%= "class='current'".html_safe if @nav=='home' %>>首页</a></li>
+          <li><a href="/blog" <%= "class='current'".html_safe if @nav=='blog' %>>博客</a></li>
+          <li><a href="/tag" <%= "class='current'".html_safe if @nav == 'tag' %>>分类</a></li>
+        </ul>
+      </div>
+    </div><!-- nav -->
+    <div class="wrap clearfix">
+      <%= yield %>
+    </div><!-- wrap clearfix -->
+<div class="footer">
+      <a href="https://github.com/msl12/msl12_site" class="github" target="_blank">Github</a>
+      <div class="powered-by">
+        <a href="/">Powered by msl12</a>
+      </div>
+    </div><!-- footer -->
+    <%= javascript_include_tag 'jquery', 'jquery-ujs' %>
+    <%= yield :javascripts %>
+    <script type="text/javascript">
+      <% if flash[:notice] %>
+        $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
+      <% end %>
+    </script>
+  </body>
+</html>
