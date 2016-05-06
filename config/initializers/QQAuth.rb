@@ -1,5 +1,6 @@
 require 'timeout'
 require 'rest-client'
+require 'json'
 
 class QQAuth
 
@@ -10,19 +11,22 @@ class QQAuth
 	def callback(code)
 		@openid = Timeout::timeout(20) do
 			@access_token = JSON.parse(RestClient.get('https://graph.qq.com/oauth2.0/token',
-				:grant_type => 'authorization_code',
-				:client_id => APP_CONFIG['qq_api_key'],
-                                                 	:client_secret => APP_CONFIG['qq_api_secret'],
-                                                 	:code => code,
-                                                 	:redirect_uri => APP_CONFIG['qq_redirect_uri'])
+				{ :params =>
+					{
+						:grant_type => 'authorization_code',
+						:client_id => APP_CONFIG['qq_api_key'],
+						:client_secret => APP_CONFIG['qq_api_secret'],
+						:code => code,
+						:redirect_uri => APP_CONFIG['qq_redirect_uri']
+					}
+                                                 	)
 			)['access_token']
 			JSON.parse(RestClient.get("https://graph.qq.com/oauth2.0/me?access_token=#{@access_token}"))['openid']
 		end
 		raise Error, "验证失败" unless @openid # error信息如何显示？
+		return @openid
 	rescue Timeout::Error
 		raise Error, "访问超时，请稍后重试"
-
-		return @openid
 	end
 
 	def get_user_info
