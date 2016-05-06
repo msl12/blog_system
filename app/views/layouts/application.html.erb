@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
   <title><%= @title ? "#{@title} - #{APP_CONFIG['site_title']}" : APP_CONFIG['site_title'] %></title>
+  <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="<%= APP_CONFIG['qq_api_key'] %>" charset="utf-8"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -17,6 +18,7 @@
         <div class="write">
           <% unless account_login? %>
           <%= link_to '登录', main_app.login_path %>
+          <span id="qqLoginBtn"></span>
           <% else %>
           <%= current_account.name %>
            <% if account_admin? %>
@@ -49,6 +51,10 @@
     <%= javascript_include_tag 'jquery', 'jquery-ujs' %>
     <%= yield :javascripts %>
     <script type="text/javascript">
+      QC.Login({
+        btnId:"qqLoginBtn",
+        size: "B_M"
+      });
       <% if flash[:notice] %>
         $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
       <% end %>

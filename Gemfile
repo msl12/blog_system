@@ -45,8 +45,10 @@ group :development do
   gem 'spring'
 end
 
+# add by myself:
 gem 'will_paginate'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'github-markdown', :require => 'github/markdown'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
+gem 'rest-client'

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   match 'admin/attachment' => 'admins#create_attachment', via: :post, as: 'post_attachment'
   match "admin/attachment/:id" => 'admins#attachment', via: :get, as: 'attachment'
   match "admin/attachment/:id" => 'admins#delete_attachment', via: :delete, as: 'delete_attachment'
+  match '/qq_callback' => 'home#qq_callback', via: :get, as: 'qq_callback'
 
 end

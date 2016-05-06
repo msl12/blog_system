@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :already_logged?, only: [:login_get, :login_post]
+	before_action :already_logged?, only: [:login_get, :login_post, :qq_callback]
 
 	def index
 		@blogs = Blog.order('id DESC').paginate(page: params[:page])
@@ -7,6 +7,27 @@ class HomeController < ApplicationController
 
 	def login_get
 		
+	end
+
+	def qq_callback
+		return halt_401 unless params[:code]
+		auth = QQAuth.new
+		begin
+			openid = auth.callback(params[:code])
+			user_info = auth.get_user_info
+			@account = Account.where(:openid => openid.to_i).first
+			unless @account 
+				@account = Account.create(:openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'])
+			end
+			if @account.profile_image_url.blank?
+				@account.update_attributes(:profile_image_url => user_info['profile_image_url'])
+			end
+			session[:account_id] = @account.id
+			flash[:notice] = '成功登录'
+			redirect_to '/'
+		rescue => e
+			return halt_401
+		end
 	end
 
 	def login_post

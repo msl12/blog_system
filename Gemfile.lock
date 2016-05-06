@@ -116,6 +116,8 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -126,9 +128,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    second_level_cache (2.1.9)
-      activerecord (> 4.0.0, < 5.0)
-      activesupport (> 4.0.0, < 5.0)
     spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
@@ -167,9 +166,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.5.1)
+  rest-client
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  second_level_cache (~> 2.1.9)
   spring
   sqlite3
   turbolinks
