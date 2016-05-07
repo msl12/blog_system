@@ -6,12 +6,12 @@ class Account < ActiveRecord::Base
 	has_many :blog_comments, :dependent => :destroy
 	has_many :attachments
 
-	validates_presence_of :email, :if => :password_required
-	validates_presence_of :password, :if => :password_required
-	validates_uniqueness_of :email, :case_sensitive => false, :if => :password_required
-	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :if => :password_required
+	validates_presence_of :email, :if => :native_login_required
+	validates_presence_of :password, :if => :native_login_required
+	validates_uniqueness_of :email, :case_sensitive => false, :if => :native_login_required
+	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :if => :native_login_required
 
-	before_save :encrypt_password, :if => :password_required
+	before_save :encrypt_password, :if => :native_login_required
 
 	def self.authenticate(email, password)
 		account = Account.find_by_email(email) if email.present?
@@ -33,6 +33,10 @@ class Account < ActiveRecord::Base
 
 	def password_required
 		crypted_password.blank? || password.present?
+	end
+
+	def native_login_required
+		provider.blank? && password_required
 	end
 
 end

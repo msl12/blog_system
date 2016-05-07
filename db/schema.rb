@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506062610) do
+ActiveRecord::Schema.define(version: 20160507021555) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
     t.string   "crypted_password"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "email"
-    t.integer  "comments_count",    default: 0, null: false
+    t.integer  "comments_count",               default: 0, null: false
     t.string   "logo"
     t.string   "openid"
     t.string   "profile_image_url"
+    t.string   "provider",          limit: 20
   end
 
   create_table "attachments", force: :cascade do |t|

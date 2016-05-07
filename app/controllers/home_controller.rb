@@ -19,9 +19,9 @@ class HomeController < ApplicationController
 		#begin
 			openid = auth.callback(params[:code])
 			user_info = auth.get_user_info
-			@account = Account.where(:openid => openid.to_i).first
+			@account = Account.where(:provider => 'qq', :openid => openid.to_i).first
 			unless @account 
-				@account = Account.create(:openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'])
+				@account = Account.create(:provider => 'qq', :openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'])
 			end
 			if @account.profile_image_url.blank?
 				@account.update_attributes(:profile_image_url => user_info['profile_image_url'])
