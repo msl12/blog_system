@@ -4,8 +4,8 @@ default: &default
   database: msl12_site
   pool: 5
   host: localhost
-  username: root
-  password: as7022077722
+  username: yours
+  password: yours
   timeout: 5000
 
 development:

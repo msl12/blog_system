@@ -14,33 +14,33 @@
 ActiveRecord::Schema.define(version: 20160507061015) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "crypted_password"
-    t.string   "email"
-    t.integer  "comments_count",               default: 0, null: false
-    t.string   "logo"
-    t.string   "openid"
-    t.string   "profile_image_url"
+    t.string   "name",              limit: 255
+    t.string   "crypted_password",  limit: 255
+    t.string   "email",             limit: 255
+    t.integer  "comments_count",    limit: 4,   default: 0, null: false
+    t.string   "logo",              limit: 255
+    t.string   "openid",            limit: 255
+    t.string   "profile_image_url", limit: 255
     t.string   "provider",          limit: 20
-    t.string   "profile_url"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.string   "profile_url",       limit: 255
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "attachments", force: :cascade do |t|
-    t.string   "file"
-    t.integer  "account_id"
-    t.integer  "blog_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "file",       limit: 255
+    t.integer  "account_id", limit: 4
+    t.integer  "blog_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "blog_comments", force: :cascade do |t|
-    t.integer  "account_id"
-    t.integer  "blog_id"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "account_id", limit: 4
+    t.integer  "blog_id",    limit: 4
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "blog_contents", force: :cascade do |t|
@@ -50,38 +50,38 @@ ActiveRecord::Schema.define(version: 20160507061015) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "title",                       null: false
-    t.integer  "view_count",      default: 0, null: false
-    t.integer  "blog_content_id"
-    t.integer  "account_id"
-    t.string   "cached_tag_list"
-    t.integer  "comments_count",  default: 0, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "title",           limit: 255,             null: false
+    t.integer  "view_count",      limit: 4,   default: 0, null: false
+    t.integer  "blog_content_id", limit: 4
+    t.integer  "account_id",      limit: 4
+    t.string   "cached_tag_list", limit: 255
+    t.integer  "comments_count",  limit: 4,   default: 0, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.integer  "tag_id",        limit: 4
+    t.integer  "taggable_id",   limit: 4
+    t.string   "taggable_type", limit: 255
+    t.integer  "tagger_id",     limit: 4
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["context"], name: "index_taggings_on_context", unique: true
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", unique: true
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", unique: true
-  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", unique: true
-  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", unique: true
-  add_index "taggings", ["tagger_type"], name: "index_taggings_on_tagger_type", unique: true
+  add_index "taggings", ["context"], name: "index_taggings_on_context", unique: true, using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", unique: true, using: :btree
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", unique: true, using: :btree
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", unique: true, using: :btree
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", unique: true, using: :btree
+  add_index "taggings", ["tagger_type"], name: "index_taggings_on_tagger_type", unique: true, using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string  "name",           limit: 255
+    t.integer "taggings_count", limit: 4,   default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
 end
