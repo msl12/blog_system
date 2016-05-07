@@ -18,7 +18,10 @@ class QQAuth
 						:client_secret => APP_CONFIG['qq_api_secret'],
 						:code => code,
 						:redirect_uri => APP_CONFIG['qq_redirect_uri']
-					}
+					},
+                                                 	
+                                                 	  :accept => :json
+                                                 	  }
                                                  	)
 			)['access_token']
 			JSON.parse(RestClient.get("https://graph.qq.com/oauth2.0/me?access_token=#{@access_token}"))['openid']
