@@ -5,11 +5,19 @@ module BlogsHelper
 	end
 
 	def commenter_logo(commenter)
-	      	link_to image_tag('website.jpg', :alt => commenter.name), APP_CONFIG['site_url']
+		if commenter.provider && commenter.provider == 'qq'
+			link_to image_tag(commenter.profile_image_url, :alt => commenter.name, "http://weibo.com/", :target => '_blank', :rel => 'nofollow')
+		else
+	      		link_to image_tag('website.jpg', :alt => commenter.name), APP_CONFIG['site_url']
+	      	end
 	end
 
 	def commenter_link(commenter)
-		link_to commenter.name, APP_CONFIG['site_url']
+		if commenter.provider && commenter.provider == 'qq'
+			link_to commenter.name, "http://weibo.com/", :target => '_blank', :rel => 'nofollow'
+		else
+			link_to commenter.name, APP_CONFIG['site_url']
+		end
 	end
 
 	def brief_content(content)

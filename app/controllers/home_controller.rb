@@ -16,10 +16,10 @@ class HomeController < ApplicationController
 	def qq_callback
 		return halt_401 unless params[:code]
 		auth = QQAuth.new
-		#begin
+		begin
 			openid = auth.callback(params[:code])
 			user_info = auth.get_user_info
-			@account = Account.where(:provider => 'qq', :openid => openid.to_i).first
+			@account = Account.where(:provider => 'qq', :openid => openid).first
 			unless @account 
 				@account = Account.create(:provider => 'qq', :openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'])
 			end
@@ -29,9 +29,9 @@ class HomeController < ApplicationController
 			session[:account_id] = @account.id
 			flash[:notice] = '成功登录'
 			redirect_to '/'
-		#rescue => e
-			#return halt_401
-		#end
+		rescue => e
+			return halt_401
+		end
 	end
 
 	def login_post
