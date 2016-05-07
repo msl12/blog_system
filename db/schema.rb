@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507021555) do
+ActiveRecord::Schema.define(version: 20160507041638) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160507021555) do
     t.string   "openid"
     t.string   "profile_image_url"
     t.string   "provider",          limit: 20
+    t.string   "profile_url"
   end
 
   create_table "attachments", force: :cascade do |t|

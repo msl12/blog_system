@@ -6,7 +6,7 @@ module BlogsHelper
 
 	def commenter_logo(commenter)
 		if commenter.provider && commenter.provider == 'qq'
-			link_to image_tag(commenter.profile_image_url, :alt => commenter.name, "http://weibo.com/", :target => '_blank', :rel => 'nofollow')
+			link_to image_tag(commenter.profile_image_url, :alt => commenter.name), "http://weibo.com/", :target => '_blank', :rel => 'nofollow'
 		else
 	      		link_to image_tag('website.jpg', :alt => commenter.name), APP_CONFIG['site_url']
 	      	end

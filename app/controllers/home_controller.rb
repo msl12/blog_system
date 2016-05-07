@@ -19,12 +19,13 @@ class HomeController < ApplicationController
 		begin
 			openid = auth.callback(params[:code])
 			user_info = auth.get_user_info
+			info = auth.get_info
 			@account = Account.where(:provider => 'qq', :openid => openid).first
 			unless @account 
-				@account = Account.create(:provider => 'qq', :openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'])
+				@account = Account.create(:provider => 'qq', :openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'], :profile_url => info['home_page'])
 			end
-			if @account.profile_image_url.blank?
-				@account.update_attributes(:profile_image_url => user_info['profile_image_url'])
+			if @account.profile_url.blank? || @account.profile_image_url.blank?
+				@account.update_attributes(:profile_image_url => user_info['profile_image_url'], :profile_url => info['home_page'])
 			end
 			session[:account_id] = @account.id
 			flash[:notice] = '成功登录'

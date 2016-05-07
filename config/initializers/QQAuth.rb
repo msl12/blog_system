@@ -45,4 +45,16 @@ class QQAuth
 		raise Error, "访问超时，请稍后重试"
 	end
 
+	def get_info
+		info = Timeout::timeout(20) do
+			JSON.parse(RestClient.get("https://graph.qq.com/user/get_info?access_token=#{@access_token}&oauth_consumer_key=#{APP_CONFIG['qq_api_key']}&openid=#{@openid}&format=json"))
+		end
+		unless info["homepage"]
+			raise Error, "获取用户微博信息时发生错误，请稍后重试"
+		end
+		return info
+	rescue Timeout::Error
+		raise Error, "访问超时，请稍后重试"
+	end
+
 end
