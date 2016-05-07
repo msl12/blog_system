@@ -27,9 +27,7 @@ class QQAuth
 			long_str = long_str.gsub(" );\n", '')
 			JSON.parse(long_str)['openid']
 		end
-		raise Error, "验证失败" unless @openid # error信息如何显示？
-		STDERR.puts "access_token:" + @access_token
-		STDERR.puts "openid:" + @openid
+		raise Error, "验证失败" unless @openid
 		return @openid
 	rescue Timeout::Error
 		raise Error, "访问超时，请稍后重试"
