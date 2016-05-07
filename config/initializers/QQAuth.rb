@@ -10,7 +10,7 @@ class QQAuth
 
 	def callback(code)
 		@openid = Timeout::timeout(20) do
-			@access_token = JSON.parse(RestClient.get('https://graph.qq.com/oauth2.0/token',
+			long_str = RestClient.get('https://graph.qq.com/oauth2.0/token',
 				{ :params =>
 					{
 						:grant_type => 'authorization_code',
@@ -18,13 +18,14 @@ class QQAuth
 						:client_secret => APP_CONFIG['qq_api_secret'],
 						:code => code,
 						:redirect_uri => APP_CONFIG['qq_redirect_uri']
-					},
-                                                 	
-                                                 	  :accept => :json
-                                                 	  }
-                                                 	)
-			)['access_token']
-			JSON.parse(RestClient.get("https://graph.qq.com/oauth2.0/me?access_token=#{@access_token}"))['openid']
+					}
+                                                 	  })
+			long_str = long_str.split('&')[0]
+			@access_token = long_str.split('=')[1]
+
+			long_str = RestClient.get("https://graph.qq.com/oauth2.0/me?access_token=#{@access_token}").gsub('callback( ', '')
+			long_str = long_str.gsub(" );\n", '')
+			JSON.parse(long_str)['openid']
 		end
 		raise Error, "验证失败" unless @openid # error信息如何显示？
 		return @openid
