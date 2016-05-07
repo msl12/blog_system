@@ -28,6 +28,8 @@ class QQAuth
 			JSON.parse(long_str)['openid']
 		end
 		raise Error, "验证失败" unless @openid # error信息如何显示？
+		STDERR.puts "access_token:" + @access_token
+		STDERR.puts "openid:" + @openid
 		return @openid
 	rescue Timeout::Error
 		raise Error, "访问超时，请稍后重试"
@@ -49,7 +51,7 @@ class QQAuth
 		info = Timeout::timeout(20) do
 			JSON.parse(RestClient.get("https://graph.qq.com/user/get_info?access_token=#{@access_token}&oauth_consumer_key=#{APP_CONFIG['qq_api_key']}&openid=#{@openid}&format=json"))
 		end
-		unless info["homepage"]
+		unless info['data']
 			raise Error, "获取用户微博信息时发生错误，请稍后重试"
 		end
 		return info
