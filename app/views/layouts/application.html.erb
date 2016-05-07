@@ -50,8 +50,8 @@
       </div>
     </div><!-- footer -->
     <%= javascript_include_tag 'jquery', 'jquery-ujs' %>
-    <%= yield :javascripts %>
     <script>
+    <%= yield :javascripts %>
       <% if flash[:notice] %>
         $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
       <% end %>
