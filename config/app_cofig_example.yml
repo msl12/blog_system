@@ -1,0 +1,11 @@
+development: &default
+  site_title: '小莫的小栈'
+  site_url: 'http://localhost:3000'
+  site_motto: 'stay hungry, stay foolish'
+  qq_api_key: ''
+  qq_api_secret: ''
+  qq_redirect_uri: ''
+
+production:
+  <<: *default
+  site_url: 'http://www.msl12.cn'
