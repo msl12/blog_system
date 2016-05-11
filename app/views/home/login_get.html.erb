@@ -1,0 +1,15 @@
+<div class="login">
+<%= form_for :account, url: login_post_path do |f| %>
+  <p>
+    <%= f.label :Email地址 %>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :输入密码 %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.submit '', :class => 'login'  %>
+  </p>
+<% end %>
+</div>

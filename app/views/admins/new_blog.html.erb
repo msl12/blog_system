@@ -1,0 +1,8 @@
+<div class="publish">
+	<div class="con">
+		<%= form_for :blog, url: admin_blog_path, html: { id: 'editor' } do |f| %>
+			<%= render partial: 'form', :object => f %>
+		<% end %>
+	</div>
+</div>
+<%= render partial: 'form_js' %>
