@@ -1,4 +1,0 @@
-$(document).scrollTop($('div#comments').offset().top);
-$('div#comments>ul').prepend('<%= escape_javascript(render("blog/comment", :comment => @comment)).html_safe %>');
-$('div#comments>ul>li#<%= @comment.id %>').hide().fadeIn('slow');
-$('textarea#blog_comment_content').attr("value", "");
