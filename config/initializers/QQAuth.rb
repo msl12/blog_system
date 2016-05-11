@@ -27,10 +27,10 @@ class QQAuth
 			long_str = long_str.gsub(" );\n", '')
 			JSON.parse(long_str)['openid']
 		end
-		raise Error, "验证失败" unless @openid
+		raise "验证失败" unless @openid
 		return @openid
 	rescue Timeout::Error
-		raise Error, "访问超时，请稍后重试"
+		raise "访问超时，请稍后重试"
 	end
 
 	def get_user_info
@@ -38,11 +38,11 @@ class QQAuth
 			JSON.parse(RestClient.get("https://graph.qq.com/user/get_user_info?openid=#{@openid}&access_token=#{@access_token}&oauth_consumer_key=#{APP_CONFIG['qq_api_key']}"))
 		end
 		unless user_info["nickname"]
-			raise Error, "获取用户信息时发生错误，请稍后重试"
+			raise "获取用户信息时发生错误，请稍后重试"
 		end
 		return user_info
 	rescue Timeout::Error
-		raise Error, "访问超时，请稍后重试"
+		raise "访问超时，请稍后重试"
 	end
 
 	def get_info
@@ -50,11 +50,11 @@ class QQAuth
 			JSON.parse(RestClient.get("https://graph.qq.com/user/get_info?access_token=#{@access_token}&oauth_consumer_key=#{APP_CONFIG['qq_api_key']}&openid=#{@openid}&format=json"))
 		end
 		unless info['data']
-			raise Error, "获取用户微博信息时发生错误，请稍后重试"
+			raise "获取用户微博信息时发生错误，请稍后重试"
 		end
 		return info
 	rescue Timeout::Error
-		raise Error, "访问超时，请稍后重试"
+		raise "访问超时，请稍后重试"
 	end
 
 end
