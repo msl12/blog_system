@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+/* a large amount of data here are redundant */
+
 /*heard*/
 body{ background:#D8DDEA;}
 .wrap{ max-width:1000px;margin:0 auto; }
