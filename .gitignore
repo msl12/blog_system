@@ -25,4 +25,3 @@ db/*.sqlite3
 log/*.log
 config/secrets.yml
 test/
-config/database.yml
