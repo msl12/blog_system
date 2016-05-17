@@ -1,11 +1,8 @@
 default: &default
-  adapter: mysql2
+  adapter: sqlite3
   encoding: utf8
-  database: msl12_site
+  database: db/msl12_site.sqlite3
   pool: 5
-  host: localhost
-  username: yours
-  password: yours
   timeout: 5000
 
 development:
