@@ -17,6 +17,9 @@ body{ background:#D8DDEA;}
 .header .write form{ display:inline;}
 .header .write .admin{background:url(y.png) -3px -980px no-repeat;}
 .header .write .admin:hover{background:url(y.png) -3px -1010px no-repeat;}
+.header .write .qq_login{ background: url(QQ_connect.png) no-repeat;}
+.header .write .qq_login:hover{ background: url(QQ_connect.png) no-repeat;}
+
 /*nav*/
 .nav{ font-size:14px; background:url(x.png) 0 0 ; height:53px;}
 .nav li{ float:left; }

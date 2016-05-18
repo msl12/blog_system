@@ -19,7 +19,7 @@
         <div class="write">
           <% unless account_login? %>
           <%= link_to '管理员登录', main_app.login_path %>
-          <%= link_to 'QQ登录', main_app.qq_login_path %>
+          <%= link_to 'QQ登录', main_app.qq_login_path, :class => 'qq_login' %>
           <% else %>
           <%= current_account.name %>
            <% if account_admin? %>
