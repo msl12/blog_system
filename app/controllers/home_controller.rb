@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 			info = auth.get_info
 			profile_url = "http://t.qq.com/" + info['data']['name'] if info
 			@account = Account.where(:provider => 'qq', :openid => openid).first
-			unless @account 
+			unless @account
 				if profile_url
 					@account = Account.create(:provider => 'qq', :openid => openid, :name => user_info['nickname'], :profile_image_url => user_info['figureurl_qq_1'], :profile_url => profile_url)
 				else

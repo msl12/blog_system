@@ -50,7 +50,7 @@ class QQAuth
 			JSON.parse(RestClient.get("https://graph.qq.com/user/get_info?access_token=#{@access_token}&oauth_consumer_key=#{APP_CONFIG['qq_api_key']}&openid=#{@openid}&format=json"))
 		end
 
-		if info['ret'] == '100030'
+		if info['ret'] == 100030
 			return nil
 		end
 
