@@ -21,9 +21,9 @@ build/
 
 config/app_config.yml
 db/*.sqlite3
-log/*.log
 config/secrets.yml
 test/
 public/assets/
 public/uploads/**/*
 /tmp/
+log/
