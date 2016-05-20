@@ -53,4 +53,3 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
 gem 'rest-client'
 gem 'puma'
-#gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
