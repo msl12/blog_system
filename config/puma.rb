@@ -11,5 +11,5 @@ state_path       File.join(tmp_path, 'puma.state')
 stdout_redirect  File.join(tmp_path, 'puma.out.log'), File.join(tmp_path, 'puma.err.log'), true
 
 threads 0, 16
-bind 'tcp://0.0.0.0:80'
+bind 'tcp://0.0.0.0:8080'
 workers 0
