@@ -2,6 +2,7 @@ development: &default
   site_title: '小莫的小栈'
   site_url: 'http://localhost:3000'
   site_motto: 'stay hungry, stay foolish'
+  site_description: 'msl12个人博客网站，发表个人原创的博客文章'
 
   # use for QQ login
   qq_api_key: ''
