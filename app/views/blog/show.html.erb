@@ -1,4 +1,5 @@
 <% @title = @blog.title %>
+<% @description = @blog.cached_tag_list.to_s + ' ' + @blog.content.truncate(200).gsub(/(\r|\n)/, ' ') %>
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag 'github', 'github.min' %>
 <% end %>
