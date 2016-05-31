@@ -2,6 +2,7 @@ require 'base64'
 
 class Account < ActiveRecord::Base
 	attr_accessor :password
+	acts_as_cached
 	has_many :blogs
 	has_many :blog_comments, :dependent => :destroy
 	has_many :attachments

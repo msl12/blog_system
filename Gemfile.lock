@@ -128,6 +128,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    second_level_cache (2.1.9)
+      activerecord (> 4.0.0, < 5.0)
+      activesupport (> 4.0.0, < 5.0)
     spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
@@ -169,6 +172,7 @@ DEPENDENCIES
   rest-client
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  second_level_cache (~> 2.1.9)
   spring
   sqlite3
   turbolinks

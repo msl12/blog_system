@@ -1,3 +1,4 @@
+<% cache("#{CACHE_PREFIX}/layout/right", :expires_in => 1.day) do %>
 <h3>我的微信号</h3>
 <div class="tag">
 	<%= image_tag("weixin.png", :alt => "微信号", :title => "微信号") %>
@@ -23,3 +24,4 @@
 		</li>
 	<% end %>
 </ul>
+<% end %>

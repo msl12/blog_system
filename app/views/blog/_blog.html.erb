@@ -1,3 +1,10 @@
+<% 
+  view_count = blog.view_count
+  if b = Blog.read_second_level_cache(blog.id)
+    view_count = b.view_count
+  end
+%>
+
 <div class="con">
   <div class="tit clearfix">
     <%= link_to blog.title, blog_path(blog) %>
@@ -14,7 +21,7 @@
     <div class="fr">
       <span class="author"><%= blog.account.name %></span>
       <span class="time"><%= time_ago_in_words(blog.created_at) %>前发表</span>
-      <span class="views" title="浏览次数"><%= blog.view_count %>次浏览</span>
+      <span class="views" title="浏览次数"><%= view_count %>次浏览</span>
       <%= link_to blog.comments_count.to_s, "/blog/#{blog.id}#comments", :class => 'comment', :title => '评论数' %>
     </div>
   </div>

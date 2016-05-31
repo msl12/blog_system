@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+	acts_as_cached version: 1, expires_in: 1.week
 	acts_as_taggable
 
 	has_many :comments, :class_name => 'BlogComment', :dependent => :destroy
