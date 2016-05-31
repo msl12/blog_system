@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 20160507061015) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["context"], name: "index_taggings_on_context", unique: true
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", unique: true
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", unique: true
-  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", unique: true
-  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", unique: true
-  add_index "taggings", ["tagger_type"], name: "index_taggings_on_tagger_type", unique: true
+  add_index "taggings", ["context"], name: "index_taggings_on_context"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id"
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type"
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id"
+  add_index "taggings", ["tagger_type"], name: "index_taggings_on_tagger_type"
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
