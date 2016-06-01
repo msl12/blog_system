@@ -22,7 +22,7 @@
         </div>
       <% end %>
       <div class="text">
-        <%= markdown(@blog.content) %>
+        <%= @blog.md_content.html_safe %>
       </div>
       <div class="info clearfix">
         <div class="fr">

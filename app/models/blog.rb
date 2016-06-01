@@ -2,6 +2,9 @@ class Blog < ActiveRecord::Base
 	acts_as_cached version: 1, expires_in: 1.week
 	acts_as_taggable
 
+	after_save :clean_cache
+	before_destroy :clean_cache
+
 	has_many :comments, :class_name => 'BlogComment', :dependent => :destroy
 	has_many :attachments, :dependent => :destroy
 	belongs_to :blog_content, :dependent => :destroy
@@ -41,7 +44,9 @@ class Blog < ActiveRecord::Base
 	end
 
 	def self.cached_tag_cloud
-		self.tag_counts.sort_by(&:count).reverse
+		Rails.cache.fetch("#{CACHE_PREFIX}/blog_tags/tag_cloud") do
+			self.tag_counts.sort_by(&:count).reverse
+		end
 	end
 
 	def user_tags
@@ -59,9 +64,22 @@ class Blog < ActiveRecord::Base
 	end
 
 	def attach!(owner)
-	    self.transaction do
-	      owner.attachments.orphan.each {|attachment| attachment.update_attribute(:blog_id, self.id) }
-	    end
-	  end
+		self.transaction do
+			owner.attachments.orphan.each {|attachment| attachment.update_attribute(:blog_id, self.id) }
+		end
+	end
+
+	def clean_cache
+		Rails.cache.delete("#{CACHE_PREFIX}/blog_tags/tag_cloud")
+    		Rails.cache.delete("#{CACHE_PREFIX}/layout/right")
+  	end
+
+  	def md_content
+  		Rails.cache.fetch(content_cache_key) { GitHub::Markdown.to_html(content, :gfm) }
+  	end
+
+  	def content_cache_key
+  		"#{CACHE_PREFIX}/blog_content/#{self.id}/#{updated_at.to_i}"
+  	end
 
 end

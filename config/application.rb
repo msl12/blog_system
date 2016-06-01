@@ -23,5 +23,8 @@ module Msl12Site
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale='zh-CN'
+    config.cache_store = [:dalli_store, '127.0.0.1', { namespace: 'rb-1', compress: true }]
+    # When you want to clear only second level cache apart from other cache for example fragment cache in cache store, you can only change the cache_key_prefix
+    SecondLevelCache.configure.cache_key_prefix = CACHE_PREFIX
   end
 end
