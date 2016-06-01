@@ -5,8 +5,8 @@ require "yaml"
 require 'will_paginate/per_page'
 require 'rails'
 
-PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
-APP_CONFIG = YAML.load_file(File.expand_path("#{PADRINO_ROOT}/config", __FILE__)+'/app_config.yml')[Rails.env]
+RAILS_ROOT = File.expand_path('../..', __FILE__) unless defined?(RAILS_ROOT)
+APP_CONFIG = YAML.load_file(File.expand_path("#{RAILS_ROOT}/config", __FILE__)+'/app_config.yml')[Rails.env]
 
 WillPaginate.per_page = 3
 
