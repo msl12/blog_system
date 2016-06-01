@@ -26,7 +26,8 @@ class Blog < ActiveRecord::Base
 
 	 def increment_view_count
 	 	increment(:view_count)
-	 	self.save
+	 	write_second_level_cache
+	 	self.update_attribute(:view_count, view_count) if view_count % 10 == 0
 	end
 
 	def self.hot_blogs(count)

@@ -13,8 +13,12 @@ class BlogComment < ActiveRecord::Base
 
 	def md_content
 		Rails.cache.fetch(content_cache_key) do
-			Sanitize(GitHub::Markdown.to_html(content, :gfm))
+			Sanitize.clean(GitHub::Markdown.to_html(content, :gfm), Sanitize::Config::RELAXED)
 		end
+	end
+
+	def brief_content
+		Sanitize.clean(content).truncate(100)
 	end
 
 	def content_cache_key

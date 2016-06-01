@@ -19,7 +19,7 @@
 <ul class="comment">
 	<% BlogComment.order('id DESC').limit(5).each do |comment| %>
 		<li>
-			<div><%= brief_content(comment.content) %></div>
+			<div><%= comment.brief_content %></div>
 			<%= comment.account.name %>评论了<%= link_to comment.blog.title, "/blog/#{comment.blog.id}#comments" %>
 		</li>
 	<% end %>
