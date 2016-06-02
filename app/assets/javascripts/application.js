@@ -1,25 +1,5 @@
 //= require jquery
 
-// Put your application scripts here
-$(function(){
-  // response search query on main nav both mouse click and keyboard return key
-  $('button#search-button').click(function() {
-    var keyword = $.trim($('input#search-box').val());
-    if (keyword != null && keyword != '') {
-      $('form#cse-search-box').submit();
-    }
-  });
-  
-  $('input#search-box').keyup(function(event) {
-    if (event.keyCode == 13) {
-      var keyword = $.trim($('input#search-box').val());
-      if (keyword != null && keyword != '') {
-        $('form#cse-search-box').submit();
-      }
-    }
-  });
-});
-
 // filter illegal tag, only number, underscore, alphabet and chinese words, add #, + like C#, C++
 filterTags = function(tags) {
   var newArray = new Array();
