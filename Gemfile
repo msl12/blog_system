@@ -55,5 +55,5 @@ gem 'rest-client'
 gem 'puma'
 gem "second_level_cache", "~> 2.1.9"
 gem 'dalli'
-gem 'kgio' # give dalli a 20-30% performance boost
+gem 'kgio'
 gem 'sanitize'
