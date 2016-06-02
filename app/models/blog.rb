@@ -72,7 +72,6 @@ class Blog < ActiveRecord::Base
 
 	def clean_cache
 		Rails.cache.delete("#{CACHE_PREFIX}/blog_tags/tag_cloud")
-    		Rails.cache.delete("#{CACHE_PREFIX}/layout/right")
   	end
 
   	def md_content

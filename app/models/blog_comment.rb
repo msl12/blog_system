@@ -4,13 +4,6 @@ class BlogComment < ActiveRecord::Base
 	belongs_to :blog, :counter_cache => :comments_count
 	belongs_to :account, :counter_cache => :comments_count
 
-	after_save :clean_cache
-	before_destroy :clean_cache
-
-	def clean_cache
-		Rails.cache.delete("#{CACHE_PREFIX}/layout/right")
-	end
-
 	def md_content
 		Rails.cache.fetch(content_cache_key) do
 			Sanitize.clean(GitHub::Markdown.to_html(content, :gfm), Sanitize::Config::RELAXED)
