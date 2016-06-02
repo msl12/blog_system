@@ -1,8 +1,3 @@
-/*
- * Padrino Javascript Jquery Adapter
- * Created for use with Padrino Ruby Web Framework (http://www.padrinorb.com)
-**/
-
 /* Remote Form Support
  * form_for @user, '/user', :remote => true
 **/

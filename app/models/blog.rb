@@ -76,7 +76,9 @@ class Blog < ActiveRecord::Base
   	end
 
   	def md_content
-  		Rails.cache.fetch(content_cache_key) { GitHub::Markdown.to_html(content, :gfm) }
+  		Rails.cache.fetch(content_cache_key) do
+  			GitHub::Markdown.to_html(content, :gfm)
+  		end
   	end
 
   	def content_cache_key
