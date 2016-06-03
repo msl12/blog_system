@@ -9,7 +9,7 @@ This is the source code of [my personal website project](http://msl12.cn).
 
 ## Install
 
-* run `sudo apt-get install memcached` if you don't have installed memcached
+* run `sudo apt-get install memcached` if you haven't installed memcached
 * run `bundle install`
 * rename `config/app_config.example.yml` to `config/app_config.yml`
 * rename `config/secrets.yml.default` to `config/secrets.yml`

@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /login
+Disallow: /search
+Disallow: /rss
+Disallow: /admin/
+Disallow: /uploads/
+Disallow: /stylesheets/
+Disallow: /javascripts/
+Disallow: /images/
+Disallow: /*.md$
