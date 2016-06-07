@@ -39,6 +39,7 @@
           <li><a href="/" <%= "class='current'".html_safe if @nav=='home' %>>首页</a></li>
           <li><a href="/blog" <%= "class='current'".html_safe if @nav=='blog' %>>博客</a></li>
           <li><a href="/tag" <%= "class='current'".html_safe if @nav == 'tag' %>>分类</a></li>
+          <li><a href="<%= APP_CONFIG['show_me_url'] %>">关于我</a></li>
         </ul>
       </div>
     </div><!-- nav -->

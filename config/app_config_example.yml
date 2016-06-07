@@ -3,6 +3,7 @@ development: &default
   site_url: 'http://localhost:3000'
   site_motto: 'stay hungry, stay foolish'
   site_description: 'msl12的个人博客网站，发表个人原创的博客文章'
+  show_me_url: 'http://msl12.cn/blog/18'
 
   # use for QQ login
   qq_api_key: ''
