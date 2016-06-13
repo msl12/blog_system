@@ -7,6 +7,9 @@
       <% if account_admin? %>
         <span><%= link_to '', delete_comment_path(comment), :method => :delete, :remote => true, :class => 'delete', data: {confirm: '要删除评论吗？'}, :title => '删除评论' %></span>
       <% end %>
+      <% if account_login? %>
+        <span><a href="#" title="引用" class="quote_comment"></a></span>
+      <% end %>
     </div>
     <div class="comment_content"><%= comment.md_content.html_safe %></div>
   </div>

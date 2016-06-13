@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /login
+Disallow: /qq_login
 Disallow: /search
 Disallow: /rss
 Disallow: /admin/

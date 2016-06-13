@@ -39,7 +39,7 @@
           <li><a href="/" <%= "class='current'".html_safe if @nav=='home' %>>首页</a></li>
           <li><a href="/blog" <%= "class='current'".html_safe if @nav=='blog' %>>博客</a></li>
           <li><a href="/tag" <%= "class='current'".html_safe if @nav == 'tag' %>>分类</a></li>
-          <li><a href="<%= APP_CONFIG['show_me_url'] %>">关于我</a></li>
+          <li><a href="<%= APP_CONFIG['show_me_url'] %>">关于</a></li>
         </ul>
       </div>
     </div><!-- nav -->
@@ -58,6 +58,18 @@
       <% if flash[:notice] %>
         $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
       <% end %>
+      (function() {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
     </script>
   </body>
 </html>

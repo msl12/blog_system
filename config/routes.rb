@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   match 'blog/:id' => 'blog#show', via: :get, as: 'blog'
   match 'blog/:id/comments' => 'blog#create_comment', via: :post, as: 'create_comment'
   match 'comment/:id' => 'blog#comment', via: :delete, as: 'delete_comment'
+  match '/comment/quote' => 'blog#quote_comment', via: :get
   match 'tag' => 'blog#tag_cloud', via: :get, as: 'tags'
   match 'tag/:name' => 'blog#tag', via: :get, as: 'tag'
   match 'admin/attachment/new' => 'admins#new_attachment', via: :get, as: 'new_attachment'

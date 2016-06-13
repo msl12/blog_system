@@ -43,6 +43,15 @@ class BlogController < ApplicationController
 		end
 	end
 
+	def quote_comment
+		return false unless account_login?
+		return false unless params[:id]
+		@comment = BlogComment.find(params[:id].to_i)
+		@body = "> #{@comment.account.name} 评论:\n"
+		@comment.content.gsub(/\n{3,}/, "\n\n").split("\n").each {|line| @body << "> #{line}\n"}
+		render 'quote_comment', :layout => false
+	end
+
 	def comment_preview
 		return false unless account_login?
 		@preview = GitHub::Markdown.to_html(params[:term], :gfm) if params[:term]

@@ -116,7 +116,7 @@
     // quote comment
     $('div.cot_con a.quote_comment').click(function(){
       var commentBlock = $(this).closest('li');
-      $.get('#', {id: commentBlock.attr('id')}, function(data){
+      $.get('<%= comment_quote_path %>', {id: commentBlock.attr('id')}, function(data){
         var body = $('textarea#blog_comment_content').val() + data;
         $('textarea#blog_comment_content').val(body);
         $('textarea#blog_comment_content').focus();
