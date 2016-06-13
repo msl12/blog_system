@@ -49,6 +49,7 @@ class BlogController < ApplicationController
 		@comment = BlogComment.find(params[:id].to_i)
 		@body = "> #{@comment.account.name} 评论:\n"
 		@comment.content.gsub(/\n{3,}/, "\n\n").split("\n").each {|line| @body << "> #{line}\n"}
+		@body << "\n"
 		render 'quote_comment', :layout => false
 	end
 
