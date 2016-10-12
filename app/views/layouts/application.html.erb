@@ -47,29 +47,10 @@
       <%= yield %>
     </div><!-- wrap clearfix -->
 <div class="footer">
-      <a href="https://github.com/msl12/msl12_site" class="github" target="_blank">Github</a>
-      <div class="powered-by">
-        <a href="/">Powered by msl12</a>
-      </div>
+      <a href="https://github.com/msl12/msl12_site" class="github" target="_blank">Github</a><br/>
+      <a href="http://www.miitbeian.gov.cn" target="_blank">蜀ICP备16027814号</a>
     </div><!-- footer -->
     <%= javascript_include_tag 'jquery', 'jquery-ujs' %>
     <%= yield :javascripts %>
-    <script>
-      <% if flash[:notice] %>
-        $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
-      <% end %>
-      (function() {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-        }
-        else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
   </body>
 </html>
