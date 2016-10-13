@@ -52,7 +52,7 @@ gem 'github-markdown', :require => 'github/markdown'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
 gem 'rest-client'
-#gem 'puma'
+gem 'puma'
 gem "second_level_cache", "~> 2.1.9"
 gem 'dalli'
 gem 'kgio'
