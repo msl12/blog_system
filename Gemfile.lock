@@ -98,7 +98,6 @@ GEM
       mini_portile2 (~> 2.1.0)
     nokogumbo (1.4.9)
       nokogiri
-    puma (3.6.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -194,7 +193,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kgio
-  puma
   rails (= 4.2.5.1)
   rest-client
   sanitize
