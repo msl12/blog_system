@@ -1,6 +1,4 @@
-## msl12's website
-
-This is the source code of [my personal website project](http://msl12.cn).
+# Blog website
 
 ## Requirements
 
